@@ -12,7 +12,7 @@ const StatsHourly = require("./api/models/hourlyStatsModel");
 
 // mongo connection
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/xavier"); // connect to MongoDB
+mongoose.connect("mongodb://localhost:27017/xavier",{useMongoClient: true}); // connect to MongoDB
 
 // handle incoming requests
 app.use(bodyParser.urlencoded({ extended: true }));
