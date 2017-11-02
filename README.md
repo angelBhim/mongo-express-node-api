@@ -1,2 +1,2 @@
 # mongo-express-node-api
-sample api
+npm install
