@@ -22,7 +22,12 @@ exports.processTask = (req, res) => {
             element.err +'"');
         
         element["uid"] = uid;
-        element["description"] = {code:element.code,type:element.type,err:element.err,timestamp:element.timestamp};
+        element["description"] = {
+            code:element.code,
+            type:element.type,
+            err:element.err,
+            timestamp:element.timestamp
+        };
 
         // process Tariff
         var promiseTariff = Tariff.findOne({"akeyword": element.akeyword, $and:[{"skeyword": element.skeyword}]}).exec();

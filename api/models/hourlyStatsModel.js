@@ -25,9 +25,9 @@ let HourlyStatsSchema = new Schema({
     }],
     description: [{
         code: {type: Number},
-        error: {type: String},
-        txn_type: {type: String},
-        txn_time: {type: String}
+        err: {type: String},
+        type: {type: String},
+        timestamp: {type: String}
     }],
     created_date: {
         type: Date,
