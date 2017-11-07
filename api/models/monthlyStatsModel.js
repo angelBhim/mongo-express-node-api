@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let MonthlyStatsSchema = new Schema({
-    uid: {type: String}, // service_id + product_id + code + yearMonth
-    count: {type: Number, default: 0},
+    uid: {type: String, unique : true}, // sid + skey + akey + code + err + yearMonth
+    yearMonth: {type: String},
     ac: {type: Number, default: 0},
     service: [{
-        name: String,
-        id: {type: Number, unique : true}
+        name: {type: String},
+        id: {type: Number}
     }],
     keyword: [{
         akeyword:  {type: String},
@@ -31,6 +31,11 @@ let MonthlyStatsSchema = new Schema({
     created_date: {
         type: Date,
         default: Date.now
-    }
+    },
+    view: [new Schema({ 
+        count: {type: Number, default: 0},
+        day: {type: String}
+    })]
 });
+
 module.exports = mongoose.model('stats_monthly', MonthlyStatsSchema);

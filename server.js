@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const Service = require("./api/models/serviceModel");
 const Tariff = require("./api/models/tariffModel");
 const StatsHourly = require("./api/models/hourlyStatsModel");
+const ViewHourly = require("./api/models/hourlyViewModel");
 
 
 // mongo connection

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let DailyStatsSchema = new Schema({
-    uid: {type: String}, // service_id + product_id + code + date
+    uid: {type: String, unique : true}, // sid + akey + skey + code + err + date
     count: {type: Number, default: 0},
     ac: {type: Number, default: 0},
     service: [{
         name: String,
-        id: {type: Number, unique : true}
+        id: {type: Number}
     }],
     keyword: [{
         akeyword:  {type: String},

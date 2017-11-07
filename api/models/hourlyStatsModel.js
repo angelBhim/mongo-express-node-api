@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let HourlyStatsSchema = new Schema({
-    uid: {type: String, unique : true}, // service_id + product_id + code + date + hour
+    uid: {type: String, unique : true},
     count: {type: Number, default: 0},
     ac: {type: Number, default: 0},
     service: [{

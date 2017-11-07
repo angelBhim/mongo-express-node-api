@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const sh = require("shorthash");
 
+// let ViewHourly = mongoose.model("ViewHourly");
 let StatsHourly = mongoose.model("StatsHourly");
 let Tariff = mongoose.model("Tariff");
 let Service = mongoose.model("Service");
@@ -68,6 +69,16 @@ exports.processTask = (req, res) => {
                 promiseStatsHourly.then(function(stats){
                     return stats;
                 });
+
+                // save to view model
+                // var promiseViewHourly = ViewHourly.findOneAndUpdate(
+                //     {uid: datestamp},
+                //     {"$set":element},
+                //     {upsert: true, new:true }
+                // );
+                // promiseViewHourly.then(function(view){
+                //     return view;
+                // });
 
                 console.log(element);
 

@@ -3,6 +3,8 @@ module.exports = (app) => {
     let tariffList = require('../controllers/tariffController');
     let hourlyList = require('../controllers/hourlyStatsController');
     let inboundList = require('../controllers/inboundController');
+    let hourlyViewList = require('../controllers/hourlyViewController');
+
     // our Routes
     app.route('/inbound')
        .post(inboundList.processTask);
@@ -24,13 +26,10 @@ module.exports = (app) => {
         .put(tariffList.updateTask);
 
     app.route('/stats/hourly')
-        .get(hourlyList.getTasks) 
-        .post(hourlyList.upsertTask);
-    
-    app.route('/stats/hourly/:serviceId')
-        .get(hourlyList.readServiceTask)
-        .put(hourlyList.updateTask);
+        .get(hourlyList.getTasks);
 
-    app.route('/stats/hourly/:serviceId/:akeyword')
-        .get(hourlyList.readServiceKeywordTask);
+    app.route('/view/hourly')
+        // .get(hourlyViewList.getTasks)
+        .post(hourlyViewList.processTask);
+        // .put(hourlyViewList.updateTask);
 }
