@@ -12,7 +12,8 @@ const ViewHourly = require("./api/models/hourlyViewModel");
 
 
 // mongo connection
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
+mongoose.Promise = require('bluebird');
 mongoose.connect("mongodb://localhost:27017/xavier",{useMongoClient: true}); // connect to MongoDB
 
 // handle incoming requests

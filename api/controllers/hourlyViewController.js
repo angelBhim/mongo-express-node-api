@@ -9,13 +9,13 @@ let Service = mongoose.model("Service");
 //process all request
 exports.processTask = (req, res) => {
     var json = JSON.parse(req.body.json);
-    // var list = {};
     // group raw data
     list = json.reduce(function (r, a) {
         r[a.sid] = r[a.sid] || [];
         r[a.sid].push(a);
         return r;
     }, Object.create(null));
+    // console.log(list);
  	// process grouped data
  	var finalList = {};
  	var hourly = {};
@@ -25,6 +25,8 @@ exports.processTask = (req, res) => {
  	for (var key in list) {
 	    var partialList = {};
 	    var description = [];
+		var tarResult = [];
+		var serviceResult = [];
 	
 	    list[key].forEach(function(element) {
 	    	// get required fields
@@ -43,6 +45,7 @@ exports.processTask = (req, res) => {
 	    	};
 
 	    	description.push(des);
+
 	    	partialList = {
 	    		sid : element.sid,
 	    		sname: element.sname,
@@ -51,8 +54,9 @@ exports.processTask = (req, res) => {
 	    		ac  : element.ac,
 	    		description : description	
 	    	};
-	    });
-	    // console.log(partialList);
+	  
+	    }); // list end
+
 	    services.push(partialList);
 	}
 
@@ -62,7 +66,7 @@ exports.processTask = (req, res) => {
 	};
 
 	finalList = {
-		uid : date,
+		uid : date.substr(0,8),
 		list : hourly
 	};
 
